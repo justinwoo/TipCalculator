@@ -1,6 +1,17 @@
-<h2> Welcome to tip calculator </h2>
-<nav>
-  {{#link-to 'index'}}Index{{/link-to}}
-  {{#link-to 'about'}}About{{/link-to}}
-</nav>
-{{outlet}}
+<div class="container-fluid">
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Tip Calculator</a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li id="indexNavbarSection">{{#link-to 'index'}}Home{{/link-to}}</li>
+          <li id="aboutNavbarSection">{{#link-to 'about'}}About{{/link-to}}</li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  {{outlet}}
+</div>

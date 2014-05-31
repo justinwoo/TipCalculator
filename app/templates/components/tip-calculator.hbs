@@ -1,29 +1,52 @@
-<p>Enter amount</p>
-<p>
-  ${{input type=number value=amount placeholder="Billed Amount"}}
-  <ruby>
-    <button {{action incrementBy10}}>+</button>
-    <rp><rt>$10</rt></rp>
-  </ruby>
-  <ruby>
-    <button {{action incrementBy1}}>+</button>
-    <rp><rt>$1</rt></rp>
-  </ruby>
-  <button {{action clearAmount}}>clear</button>
-</p>
-<p>Select tip percentage (current: {{selectedTipPercent}})</p>
-<p>
-{{#each item in tipPercents}}
-  <ruby>
-    <button {{action selectTip item}} >{{item.value}}</button>
-    <rp><rt>{{item.label}}</rt></rp>
-  </ruby>
-{{/each}}
-</p>
-<p>Round tip? {{input type="checkbox" checked=roundTip}}</p>
-<p>
-  tip: ${{tip}}
-</p>
-<p>
-  total: ${{total}}
-</p>
+<div class="row">
+  <div class="col-md-offset-4 col-md-4">
+    <form role="form">
+      <div class="form-group">
+        <label for="amountInput">Enter amount</label>
+        {{input type=number id="amountInput" class="form-control" value=amount placeholder="Billed Amount"}}
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-4">
+            <button class="btn btn-default btn-block" {{action incrementBy10}}>Add $10</button>
+          </div>
+          <div class="col-md-4">
+            <button class="btn btn-default btn-block" {{action incrementBy1}}>Add $1</button>
+          </div>
+          <div class="col-md-4">
+            <button class="btn btn-default btn-block" {{action clearAmount}}>Clear</button>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="tipButtonDiv">Select tip percentage (current: {{selectedTipPercent}})</label>
+        <div id="tipButtonDiv">
+          <table class="table">
+            {{#each item in tipPercents}}
+              <tr>
+                <td>{{item.label}}</td>
+                <td>
+                  <button id="{{item.label}}" class="btn btn-default btn-block" {{action selectTip item}}>{{item.value}}%</button>
+                </td>
+              </tr>
+            {{/each}}
+          </table>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>
+          {{input id="roundTipCheckBox" type="checkbox" checked=roundTip}} Round tip?
+        </label>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-offset-3 col-md-6">
+    <div class="jumbotron">
+      <h2 class="text-center">tip: ${{tip}}</h2>
+      <h1 class="text-center">total: ${{total}}</h1>
+    </div>
+  </div>
+</div>
